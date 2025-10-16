@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jamaal Portfolio</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0b061f;
+      color: white;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #130e2b;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-family: 'Cursive';
+    }
+
+    .nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav a:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .nav a:hover {
+      color: #b881ff;
+      background: rgba(138, 43, 226, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .nav a:hover:before {
+      left: 100%;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      background: linear-gradient(135deg, #2b1452, #180433);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      border: 5px solid #b881ff;
+      object-fit: cover;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 900;
+    }
+
+    .hero-text p {
+      max-width: 500px;
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    .hero-text button {
+      background: #a64eff;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hero-text button:hover {
+      background: #913ef0;
+    }
+
+    /* Beautiful Skills Section */
+    .skills {
+      padding: 80px 50px;
+      text-align: center;
+      background: linear-gradient(135deg, #0f0b1f 0%, #1a1435 50%, #0f0b1f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(106, 17, 203, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(161, 98, 247, 0.08) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-10px, -10px) rotate(1deg); }
+    }
+
+    .skills h2 {
+      font-size: 3rem;
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+      background: linear-gradient(135deg, #fff 0%, #b881ff 50%, #8a2be2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    }
+
+    .skills h2::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #8a2be2, #6a11cb, transparent);
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.7; width: 100px; }
+      50% { opacity: 1; width: 150px; }
+    }
+
+    .skills-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-box {
+      background: linear-gradient(145deg, rgba(43, 38, 69, 0.9), rgba(26, 20, 53, 0.9));
+      padding: 50px 30px;
+      border-radius: 20px;
+      font-size: 2rem;
+      color: white;
+      min-width: 140px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .skill-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transition: left 0.8s ease;
+    }
+
+    .skill-box:hover {
+      background: linear-gradient(145deg, rgba(68, 45, 110, 0.95), rgba(43, 38, 69, 0.95));
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 
+        0 20px 40px rgba(138, 43, 226, 0.3),
+        0 0 0 1px rgba(138, 43, 226, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    .skill-box:hover::before {
+      left: 100%;
+    }
+
+    .skill-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #8a2be2, #6a11cb, #8a2be2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .skill-box:hover::after {
+      transform: scaleX(1);
+    }
+
+    .skill-box .glow {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(20px);
+      top: -30px;
+      left: -30px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .skill-box:hover .glow {
+      opacity: 1;
+    }
+
+    .skill-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      transition: all 0.3s ease;
+    }
+
+    .skill-box:hover .skill-icon {
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 6px 12px rgba(138, 43, 226, 0.4));
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #fff, #b881ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .skill-level {
+      font-size: 0.9rem;
+      color: #b881ff;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    .projects {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .project-img {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    /* Updated About & Contact Section */
+    .about-contact {
+      display: flex;
+      justify-content: space-between;
+      padding: 80px 50px;
+      gap: 50px;
+      background: #130e2b;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-contact:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(106, 17, 203, 0.1) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .about, .contact {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about h2, .contact h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about h2:after, .contact h2:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, #8a2be2, #6a11cb);
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    .about p {
+      color: #e0e0e0;
+      line-height: 1.7;
+      font-size: 16px;
+      background: rgba(26, 20, 53, 0.7);
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 4px solid #8a2be2;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(26, 20, 53, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 15px;
+      border: 1px solid rgba(138, 43, 226, 0.3);
+      border-radius: 8px;
+      font-size: 16px;
+      background: rgba(15, 11, 31, 0.8);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: none;
+      border-color: #8a2be2;
+      box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .contact input::placeholder,
+    .contact textarea::placeholder {
+      color: #aaa;
+    }
+
+    .contact button {
+      background: linear-gradient(135deg, #8a2be2, #6a11cb);
+      color: white;
+      padding: 15px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .contact button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+    }
+
+    .contact button:hover:before {
+      left: 100%;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0b061f;
+      color: #aaa;
+      font-size: 14px;
+      border-top: 1px solid #1e1e2e;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .skills-grid {
+        gap: 25px;
+      }
+      
+      .skill-box {
+        padding: 40px 25px;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">JAMAAL</div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <img src="images/jamaal.jpg" alt="Jamaal" class="profile-img" />
+      <div class="hero-text">
+        <h1>JAMAAL</h1>
+        <p>Jamaal is a skilled and detail-oriented web developer with a passion for building clean, responsive, and user-friendly websites...</p>
+        <button>Hire Me</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <div class="glow"></div>
+        <div class="skill-content">
+          <span class="skill-icon">🌐</span>
+          <div class="skill-name">HTML</div>
+          <div class="skill-level">Advanced</div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="glow"></div>
+        <div class="skill-content">
+          <span class="skill-icon">🎨</span>
+          <div class="skill-name">CSS</div>
+          <div class="skill-level">Expert</div>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="glow"></div>
+        <div class="skill-content">
+          <span class="skill-icon">⚡</span>
+          <div class="skill-name">JS</div>
+          <div class="skill-level">Proficient</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Latest Projects</h2>
+    <img src="images/poter.jpg" alt="Project Sample" class="project-img"/>
+  </section>
+
+  <section class="about-contact" id="about">
+    <div class="about">
+      <h2>About</h2>
+      <p>
+        Hi, I'm Jamaal – a passionate and creative web developer with a love for turning ideas into engaging digital experiences.
+        With 2+ years of hands-on experience, I specialize in responsive web design, front-end development, and user-centered design.
+        My approach combines technical expertise with an eye for design, ensuring that every project I work on is both functional and visually appealing.
+      </p>
+    </div>
+
+    <div class="contact" id="contact">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Jamaal portfolio. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
